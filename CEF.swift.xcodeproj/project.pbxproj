@@ -1563,6 +1563,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E883E76521A8AAD4002E9EA4 /* Build configuration list for PBXNativeTarget "CEFSandbox" */;
 			buildPhases = (
+				49CEC29A25180A7700B41C08 /* Prepare external dependencies */,
 				E883E76021A8AAD4002E9EA4 /* Headers */,
 				E883E76121A8AAD4002E9EA4 /* Sources */,
 				E883E76221A8AAD4002E9EA4 /* Frameworks */,
@@ -1601,6 +1602,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -1626,6 +1628,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		49CEC29A25180A7700B41C08 /* Prepare external dependencies */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Prepare external dependencies";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ -e \"${CEF_BINARY_ROOT}/${CONFIGURATION}/Chromium Embedded Framework.framework/Headers/include\" ]; then\nexit 0\nfi\n\necho \"Building external dependencies\"\n\ncd \"${SRCROOT}\"\nscripts/setup.sh\n";
+		};
 		E84545D21B9652D8005CC3D0 /* Symlink to sample code */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

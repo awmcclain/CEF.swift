@@ -1,9 +1,18 @@
 #!/usr/bin/env sh
 
 set -e
+set -v
 
 if [ "${TRAVIS}" = "true" ]; then
     BRANCH="${TRAVIS_BRANCH}"
+elif [ "${CARTHAGE}" = "YES" ]; then
+    cartfile="${PROJECT_DIR}/../../../Cartfile"
+    if [ -f $cartfile ]; then
+	BRANCH=`grep -Eo "cef_\d+" ${cartfile}`
+    else
+       echo "ERROR: Couldn't find Cartfile at ${cartfile}, can't infer CEF branch"
+       exit 1
+    fi
 else
     BRANCH=$(git rev-parse --abbrev-ref HEAD)
 fi
